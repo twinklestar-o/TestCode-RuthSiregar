@@ -1,6 +1,6 @@
-<p align="center">
+<h1 align="center">
 Cara menjalankan kode program
-</p>
+</h1>
 
 <ol>
 <li>Clone repository</li>
