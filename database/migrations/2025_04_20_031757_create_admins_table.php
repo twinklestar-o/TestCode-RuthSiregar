@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('siswas', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->json('foto')->nullable();
-            $table->string('name');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Relasi ke tabel users
             $table->string('nama_depan');
-            $table->string('nama_belakang')->nullable();
-            $table->string('no_hp')->nullable();
-            $table->char('nisn', 10)->unique();
-            $table->text('alamat');
-            $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->string('nama_belakang');
+            $table->date('tanggal_lahir');
+            $table->enum('jenis_kelamin', ['L', 'P']); // L = Laki-laki, P = Perempuan
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('siswas');
+        Schema::dropIfExists('admins');
     }
 };
